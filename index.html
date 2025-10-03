@@ -1,0 +1,2985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillFinder - Discover Your Next Skill</title>
+    <style>
+
+    .logo {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #3498db, #9b59b6);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white" style="background-color:gold">
+  <path d="M9 21h6v-1H9v1zm3-19C7.48 2 4 5.48 4 10c0 2.38 1.19 4.47 3 5.74V18c0 .55.45 1 1 1h8c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-4.52-3.48-8-8-8z"/>
+</svg>
+</div>
+    Skill Finder
+  </div>
+    <style>
+
+        :root {
+            --primary-color: #4338ca;
+            --secondary-color: #7c3aed;
+            --accent-color: #10b981;
+            --light-color: #f9fafb;
+            --dark-color: #1f2937;
+            --gray-color: #6b7280;
+            --light-gray: #e5e7eb;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f3f4f6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://placehold.co/1200x800/4338ca/white?text=Skill+Patterns') no-repeat center center;
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            padding-right: 4rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.2);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .search-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(67, 56, 202, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .feature-card p {
+            color: var(--gray-color);
+            line-height: 1.7;
+        }
+
+        /* Popular Skills */
+        .popular-skills {
+            padding: 5rem 0;
+            background-color: #f9fafb;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-image {
+            height: 160px;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-color);
+            font-weight: 600;
+        }
+
+        .skill-content {
+            padding: 1.5rem;
+        }
+
+        .skill-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .skill-content p {
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .skill-level {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-level span {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1rem;
+        }
+
+        .enroll-btn {
+            display: block;
+            width: 100%;
+            padding: 0.7rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .enroll-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-color);
+            font-size: 1rem;
+        }
+
+        .about-image {
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        /* ai tools section */
+        .ai-tools-section {
+            padding: 5rem 0;
+            background-color: #f9fafb;
+        }
+        .ai-tools-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .ai-tools-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        .ai-tools-text p {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            line-height: 1.8;
+        }
+        .ai-tools-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .ai-tools-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-color);
+        }
+        .ai-tools-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        .ai-tools-image {
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        /* Chat Section */
+        .chat-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid var(--light-gray);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            background-color: #f9fafb;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .message {
+            display: flex;
+            gap: 1rem;
+            max-width: 70%;
+        }
+        .bot-message {
+            align-self: flex-start;
+        }
+        .user-message {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .bot-message .message-avatar {
+            background-color: #10b981;
+        }
+        .message-content {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            line-height: 1.5;
+            color: var(--dark-color);
+        }
+        .chat-input-area {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-top: 2px solid var(--light-gray);
+            background-color: white;
+        }
+        .chat-input-area input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+        .chat-input-area input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.2);
+        }
+        .chat-input-area button {
+            margin-left: 1rem;
+            padding: 0.7rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .chat-input-area button:hover {
+            background-color: var(--secondary-color);
+        }
+        .loading-indicator {
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(67, 56, 202, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--dark-color);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-color);
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--dark-color);
+        }
+
+        .author-info p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn {
+            background-color: white;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+        }
+
+        .cta .btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gray-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close:hover {
+            color: var(--dark-color);
+        }
+
+        .modal h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.2);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .form-actions button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-cancel {
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+        }
+
+        .btn-cancel:hover {
+            background-color: #d1d5db;
+        }
+
+        /* User Info Display */
+        .user-info {
+            display: none;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .user-info-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .user-credentials {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .credential-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .credential-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-bottom: 0.25rem;
+        }
+
+        .credential-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .logout-btn {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .logout-btn:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .auth-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .user-info-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .features, .popular-skills, .testimonials, .cta {
+                padding: 3rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Mobile menu (for smaller screens) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                background-color: rgba(67, 56, 202, 0.9);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="user-info" id="userInfo">
+        <div class="container user-info-content">
+            <div class="user-credentials">
+                <div class="credential-item">
+                    <span class="credential-label">Username</span>
+                    <span class="credential-value" id="displayUsername"></span>
+                </div>
+                <div class="credential-item">
+                    <span class="credential-label">Password</span>
+                    <span class="credential-value" id="displayPassword"></span>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+    </div>
+
+    <header id="mainHeader">
+        <div class="container header-container">
+            <div class="logo" style="background-color:white; color: var(--primary-color); padding: 5px; border-radius: 8px">
+               <div class="logo-icon">SF</div>
+                        SkillFinder
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#AITools">AITools</a></li>
+                    <li><a href="#Features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#login" class="btn btn-secondary" id="loginBtn">Log In</a>
+                <a href="#signup" class="btn btn-primary" id="signupBtn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Discover Your Next Skill</h1>
+            <p>Find the perfect skills to learn based on your interests, career goals, and learning style.</p>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="What skill do you want to learn? (e.g., web development, data science, ux design)">
+                <button class="search-btn" id="searchBtn">Search</button>
+            </div>
+            <div class="popular-searches">
+                <p>Popular: <a href="#" class="popular-search" data-term="web development">Web Development</a> • <a href="#" class="popular-search" data-term="data science">Data Science</a> • <a href="#" class="popular-search" data-term="digital marketing">Digital Marketing</a> • <a href="#" class="popular-search" data-term="ux design">UX Design</a></p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Skills to Learn</h2>
+                <p>Explore our most sought-after skills with high demand in today's job market.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-image" style="background-image: url('https://placehold.co/300x180/4338ca/white?text=Web+Development');">
+                    </div>
+                    <div class="skill-content">
+                        <h3>Web Development</h3>
+                        <p>Learn to build modern websites and web applications using HTML, CSS, JavaScript, React, and Node.js.</p>
+                        <div class="skill-meta">
+                            <div class="skill-level">
+                                <span>Beginner Friendly</span>
+                            </div>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <a href="#" target="_blank" class="enroll-btn">Start Learning</a>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-image" style="background-image: url('https://placehold.co/300x180/7c3aed/white?text=Data+Science');">
+                    </div>
+                    <div class="skill-content">
+                        <h3>Data Science</h3>
+                        <p>Master data analysis, visualization, machine learning, and statistical modeling using Python and R.</p>
+                        <div class="skill-meta">
+                            <div class="skill-level">
+                                <span>Intermediate</span>
+                            </div>
+                            <div class="stars">★★★★☆</div>
+                        </div>
+                        <a href="#" target="_blank" class="enroll-btn">Start Learning</a>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-image" style="background-image: url('https://placehold.co/300x180/10b981/white?text=UX+Design');">
+                    </div>
+                    <div class="skill-content">
+                        <h3>UX/UI Design</h3>
+                        <p>Create intuitive and beautiful user experiences for digital products using Figma and Adobe XD.</p>
+                        <div class="skill-meta">
+                            <div class="skill-level">
+                                <span>Beginner Friendly</span>
+                            </div>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <a href="#" target="_blank" class="enroll-btn">Start Learning</a>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-image" style="background-image: url('https://placehold.co/300x180/f59e0b/white?text=Digital+Marketing');">
+                    </div>
+                    <div class="skill-content">
+                        <h3>Digital Marketing</h3>
+                        <p>Learn SEO, social media marketing, content strategy, and analytics to grow online presence.</p>
+                        <div class="skill-meta">
+                            <div class="skill-level">
+                                <span>All Levels</span>
+                            </div>
+                            <div class="stars">★★★★☆</div>
+                        </div>
+                        <a href="" target="_blank" class="enroll-btn">Start Learning</a>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-image" style="background-image: url('https://placehold.co/300x180/ef4444/white?text=Mobile+Apps');">
+                    </div>
+                    <div class="skill-content">
+                        <h3>Mobile App Development</h3>
+                        <p>Build native and cross-platform mobile applications for iOS and Android using React Native.</p>
+                        <div class="skill-meta">
+                            <div class="skill-level">
+                                <span>Intermediate</span>
+                            </div>
+                            <div class="stars">★★★★☆</div>
+                        </div>
+                        <a href="https://alison.com/tag/app-development" target="_blank" class="enroll-btn">Start Learning</a>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-image" style="background-image: url('https://placehold.co/300x180/06b6d4/white?text=Cloud+Computing');">
+                    </div>
+                    <div class="skill-content">
+                        <h3>Cloud Computing</h3>
+                        <p>Learn AWS, Azure, or Google Cloud Platform to deploy and manage applications in the cloud.</p>
+                        <div class="skill-meta">
+                            <div class="skill-level">
+                                <span>Advanced</span>
+                            </div>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <a href="https://www.w3schools.com/aws/aws_cloudessentials_cloudcomputing.php" target="_blank" class="enroll-btn">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-results" id="searchResults">
+        <div class="container">
+            <div class="results-header">
+                <h2 id="resultsTitle">Search Results</h2>
+                <p id="resultsCount">Showing results for: <span id="searchTerm"></span></p>
+            </div>
+            <div class="results-grid" id="resultsGrid">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+    </section>
+    
+    <section class="features" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose SkillFinder?</h2>
+                <p>We help you find the perfect learning path tailored to your unique needs and goals.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalized Matching</h3>
+                    <p>Our algorithm matches you with skills based on your interests, experience level, and career aspirations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Curated Resources</h3>
+                    <p>Access hand-picked learning materials from top educators and industry experts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed analytics and milestone achievements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 style="background-color:darkgray">About skill finder</h2>
+
+                    <p>skillfinder was founded in 2025 with a mission to democratize access to high-quality education and skill development. We believe that everyone should have the opportunity to learn new skills and advance their careers, regardless of their background or location.</p>
+                    <p>Our platform uses advanced algorithms to match learners with the most relevant skills and learning resources based on their interests, career goals, and learning preferences. We partner with industry experts and top educators to provide the most up-to-date and practical learning materials.</p>
+                    <p>Join over 500,000 learners who have already transformed their careers with skill finder. Whether you're looking to switch careers, advance in your current role, or simply learn something new, we're here to support your journey every step of the way.</p>
+
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500K+</div>
+                            <div class="stat-label">Active Learners</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Skills Available</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support Available</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    Our Mission & Vision
+                </div>
+            </div>
+        </div>
+    </section>
+
+<style>
+        :root {
+            --primary: #4338ca;
+            --secondary: #7c3aed;
+            --accent: #10b981;
+            --light: #f9fafb;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --card-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        body {
+            background-color: #f3f4f6;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(to right, #e0e7ff, #ede9fe);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0 5rem;
+        }
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        .tool-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .tool-content {
+            padding: 1.5rem;
+        }
+        .tool-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+        .tool-content p {
+            color: var(--gray);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+        .category {
+            display: inline-block;
+            background: rgba(67, 56, 202, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+<section class="hero">
+        <div class="container">
+            <h1>AI-Powered Tools</h1>
+            <p>Discover cutting-edge AI tools that are transforming industries and accelerating skill development</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="tools-grid">
+            <!-- Tool 1 -->
+            <div class="tool-card">
+                <div class="tool-image">🧠</div>
+                <div class="tool-content">
+                    <span class="category">AI Assistant</span>
+                    <h3>ChatGPT</h3>
+                    <p>Advanced conversational AI for content creation, coding assistance, and personalized learning.</p>
+                    <a href="#" target="_blank" class="btn">Explore</a>
+                </div>
+            </div>
+
+            <!-- Tool 2 -->
+            <div class="tool-card">
+                <div class="tool-image">🎨</div>
+                <div class="tool-content">
+                    <span class="category">Design</span>
+                    <h3>AI Art Generator</h3>
+                    <p>Generate stunning AI art and visual concepts from text prompts for creative projects.</p>
+                    <a href="#" target="_blank" class="btn">Explore</a>
+                </div>
+            </div>
+
+            <!-- Tool 3 -->
+            <div class="tool-card">
+                <div class="tool-image">🔍</div>
+                <div class="tool-content">
+                    <span class="category">Research</span>
+                    <h3>Perplexity AI</h3>
+                    <p>AI-powered search engine that provides accurate, cited answers to complex questions.</p>
+                    <a href="#" target="_blank" class="btn">Explore</a>
+                </div>
+            </div>
+
+            <!-- Tool 4 -->
+            <div class="tool-card">
+                <div class="tool-image">📹</div>
+                <div class="tool-content">
+                    <span class="category">Video</span>
+                    <h3>Synthesia</h3>
+                    <p>Create AI-generated videos with virtual avatars for training and presentations.</p>
+                    <a href="https://www.synthesia.io" target="_blank" class="btn">Explore</a>
+                </div>
+            </div>
+
+            <!-- Tool 5 -->
+            <div class="tool-card">
+                <div class="tool-image">📝</div>
+                <div class="tool-content">
+                    <span class="category">Writing</span>
+                    <h3>Jasper</h3>
+                    <p>AI content generator for marketing copy, blog posts, and social media content.</p>
+                    <a href="#" target="_blank" class="btn">Explore</a>
+                </div>
+            </div>
+
+            <!-- Tool 6 -->
+            <div class="tool-card">
+                <div class="tool-image">📊</div>
+                <div class="tool-content">
+                    <span class="category">Analytics</span>
+                    <h3>Tableau + Einstein</h3>
+                    <p>AI-enhanced data visualization and predictive analytics for business intelligence.</p>
+                    <a href="#" target="_blank" class="btn">Explore</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<section class="ai-chat-section" id="aiChat">
+  <div class="container">
+    <div class="section-title">
+      <h2 style="background-color:antiquewhite;">AI Skill Advisor</h2>
+      <p>Ask our AI assistant for personalized skill recommendations, learning paths, or career guidance</p>
+    </div>
+
+    <div class="chat-container">
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-message">
+          <div class="message-avatar">🤖</div>
+          <div class="message-content">
+            <label for="skillSelect"><strong>Choose a topic:</strong></label>
+            <select id="skillSelect">
+              <option value="default">-- Select a skill area --</option>
+              <option value="web development">Web Development</option>
+              <option value="data science">Data Science</option>
+              <option value="ai">AI</option>
+              <option value="cloud computing">Cloud Computing</option>
+              <option value="machine learning">Machine Learning</option>
+              <option value="python">Python</option>
+              <option value="javascript">JavaScript</option>
+              <option value="data analysis">Data Analysis</option>
+              <option value="graphic design">Graphic Design</option>
+              <option value="AI tools">AI Tools</option>
+              <option value="digital marketing">Digital Marketing</option>
+              <option value="project management">Project Management</option>
+              <option value="cybersecurity">Cybersecurity</option>
+              <option value="ux design">UX Design</option>
+              <option value="career switch">Career Switch</option>
+              <option value="learning path">Learning Path</option>
+            </select>
+            <div class="response" id="responseBox"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="Type your question about skills or careers..." autocomplete="off">
+        <button id="sendBtn" class="send-btn">Send</button>
+        <div id="loadingIndicator" class="loading-indicator" style="display: none;">Loading...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+.ai-chat-section {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.chat-container {
+    background: #f9fafb;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.chat-messages {
+    height: 400px;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.message {
+    display: flex;
+    gap: 1rem;
+    max-width: 85%;
+}
+
+.bot-message {
+    align-self: flex-start;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.bot-message .message-avatar {
+    background: #10b981;
+}
+
+.message-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    line-height: 1.6;
+}
+
+.user-message .message-content {
+    background: var(--primary-color);
+    color: white;
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 1.5rem;
+    background: white;
+    border-top: 1px solid var(--light-gray);
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.chat-input-area input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.2);
+}
+
+.send-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.05);
+}
+</style>
+
+<!-- Add this JavaScript before your closing </body> tag -->
+<script>
+  const aiResponses = {
+    "web development": "Start with HTML, CSS, and JavaScript. Then learn React for frontend and Node.js for backend. Build projects!",
+    "data science": "Begin with Python and libraries like Pandas and NumPy. Learn statistics, then machine learning with scikit-learn.",
+    "ai": "Start with Python and libraries like TensorFlow or PyTorch. Learn neural networks, NLP, or computer vision.",
+    "cloud computing": "Learn AWS, Azure, or Google Cloud basics. Start with EC2, S3, IAM. Consider certifications like AWS Architect.",
+    "machine learning": "Begin with Python and scikit-learn. Understand regression, classification, clustering. Then explore deep learning.",
+    "python": "Start with syntax, data types, control structures. Practice projects. Learn Pandas and Flask next.",
+    "javascript": "Learn JS fundamentals and ES6. Practice DOM manipulation and async programming. Explore React or Vue.js.",
+    "data analysis": "Start with Excel. Then use Python with Pandas and NumPy. Learn Matplotlib and Seaborn for visualization.",
+    "graphic design": "Learn design principles like color theory and typography. Use Photoshop and Illustrator. Build a portfolio.",
+    "AI tools": "Explore ChatGPT for text, DALL·E for images, TensorFlow for ML. Use them in real projects.",
+    "digital marketing": "Understand SEO, SEM, social media. Learn Google Analytics and AdWords. Create and analyze campaigns.",
+    "project management": "Learn Agile, Scrum. Use Jira and Trello. Consider PMP or Scrum Master certifications.",
+    "cybersecurity": "Start with network security and threats. Learn Wireshark and Metasploit. Consider Security+ or CISSP.",
+    "ux design": "Start with design fundamentals and user research. Learn Figma, info architecture, usability testing. Build case studies.",
+    "career switch": "Identify transferable skills. Take courses, build projects, network. Try internships or freelance gigs.",
+    "learning path": "1) Take a SkillFinder assessment, 2) Start beginner courses, 3) Build projects, 4) Join communities, 5) Apply.",
+    "default": "Ask about web development, data science, UX design, AI, machine learning, Python, or career switching!"
+  };
+
+  const skillSelect = document.getElementById("skillSelect");
+  const responseBox = document.getElementById("responseBox");
+  const userInput = document.getElementById("userInput");
+  const sendBtn = document.getElementById("sendBtn");
+  const chatMessages = document.getElementById("chatMessages");
+  const loadingIndicator = document.getElementById("loadingIndicator");
+
+  // Dropdown interaction
+  skillSelect.addEventListener("change", () => {
+    const selected = skillSelect.value;
+    const reply = aiResponses[selected] || aiResponses["default"];
+    responseBox.textContent = reply;
+  });
+
+  // Text input interaction
+  sendBtn.addEventListener("click", () => {
+    const question = userInput.value.trim().toLowerCase();
+    if (!question) return;
+
+    loadingIndicator.style.display = "inline";
+
+    // Simulate AI response
+    setTimeout(() => {
+      loadingIndicator.style.display = "none";
+
+      const matchedKey = Object.keys(aiResponses).find(key => question.includes(key));
+      const reply = matchedKey ? aiResponses[matchedKey] : aiResponses["default"];
+
+      const userMessage = document.createElement("div");
+      userMessage.className = "message user-message";
+      userMessage.innerHTML = `<div class="message-avatar">🧑</div><div class="message-content">${userInput.value}</div>`;
+
+      const botMessage = document.createElement("div");
+      botMessage.className = "message bot-message";
+      botMessage.innerHTML = `<div class="message-avatar">🤖</div><div class="message-content">${reply}</div>`;
+
+      chatMessages.appendChild(userMessage);
+      chatMessages.appendChild(botMessage);
+      userInput.value = "";
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 800);
+  });
+</script>
+
+<!-- Add this section after your AI Tools section -->
+<section class="ai-interview-section" id="aiInterview">
+    <div class="container">
+        <div class="section-title">
+            <h2>AI Virtual Interview Practice</h2>
+            <p>Practice real-world interviews with AI that simulates hiring managers, provides feedback, and tracks your progress</p>
+        </div>
+        
+        <!-- Feature Cards -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎤</div>
+                <h3>Audio Interviews</h3>
+                <p>Practice verbal responses with real-time speech analysis and tone feedback</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📹</div>
+                <h3>Video Interviews</h3>
+                <p>Record video responses with body language analysis and eye contact tracking</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Chat Interviews</h3>
+                <p>Text-based practice with instant feedback on answer quality and structure</p>
+            </div>
+        </div>
+        
+        <!-- Free Tier Notice -->
+        <div class="free-tier-notice">
+            <div class="free-tier-content">
+                <h3>✨ Free Tier Includes:</h3>
+                <ul>
+                    <li>3 AI interviews per month (any format)</li>
+                    <li>Basic feedback on responses</li>
+                    <li>Access to 10 common interview question sets</li>
+                    <li>Performance analytics dashboard</li>
+                </ul>
+                <p style="margin-top: 1rem; font-weight: 500;">Upgrade to unlock unlimited practice and advanced features!</p>
+            </div>
+        </div>
+        
+        <!-- Pricing Tiers -->
+        <div class="pricing-grid">
+            <!-- Free Plan -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Free</h3>
+                    <div class="price">$0<span>/month</span></div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li>5 AI interviews/month</li>
+                        <li>Basic feedback</li>
+                        <li>10 question sets</li>
+                        <li>Performance analytics</li>
+                        <li class="disabled">Advanced analytics</li>
+                        <li class="disabled">Custom question builder</li>
+                        <li class="disabled">Priority support</li>
+                    </ul>
+                </div>
+                <a href="#signup" class="btn pricing-btn">Get Started</a>
+            </div>
+            
+            <!-- Pro Plan -->
+            <div class="pricing-card popular">
+                <div class="popular-badge">MOST POPULAR</div>
+                <div class="pricing-header">
+                    <h3>Pro</h3>
+                    <div class="price">$19<span>/month</span></div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li>Unlimited AI interviews</li>
+                        <li>Advanced feedback & scoring</li>
+                        <li>50+ question sets</li>
+                        <li>Detailed analytics</li>
+                        <li>Custom question builder</li>
+                        <li>Industry-specific scenarios</li>
+                        <li>Email support</li>
+                    </ul>
+                </div>
+                <a href="#signup" class="btn pricing-btn pro-btn">Upgrade Now</a>
+            </div>
+            
+            <!-- Enterprise Plan -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Enterprise</h3>
+                    <div class="price">$49<span>/month</span></div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li>Everything in Pro</li>
+                        <li>Team collaboration</li>
+                        <li>Custom AI interviewers</li>
+                        <li>API access</li>
+                        <li>Dedicated account manager</li>
+                        <li>24/7 priority support</li>
+                        <li>Custom branding</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="btn pricing-btn">Contact Sales</a>
+            </div>
+        </div>
+        
+        <!-- Interview Simulator -->
+        <section class="interview-simulator-section" id="interviewSimulator">
+  <div class="container">
+    <div class="interview-simulator">
+      <h3>🎤 Try a Free Sample Interview</h3>
+
+      <!-- Interview Type Selection -->
+      <div class="interview-controls">
+        <label for="interviewType">Choose interview type:</label>
+        <select id="interviewType">
+          <option value="chat">Chat Interview</option>
+          <option value="audio">Audio Interview</option>
+          <option value="video">Video Interview</option>
+        </select>
+        <button id="startInterview" class="btn-primary">Start Practice</button>
+      </div>
+
+      <!-- Interview Interaction -->
+      <div class="interview-demo" id="interviewDemo" style="display: none;">
+        <div class="demo-message bot-message">
+          <div class="message-avatar">🤖</div>
+          <div class="message-content" id="interviewQuestion">
+            <!-- Question will be injected here -->
+          </div>
+        </div>
+
+        <!-- Chat Mode -->
+        <div class="demo-placeholder" id="chatMode" style="display: none;">
+          <textarea id="userResponse" placeholder="Type your response here..."></textarea>
+          <button id="submitResponse" class="btn-primary">Submit</button>
+          <p class="feedback" id="aiFeedback" style="display: none;"></p>
+        </div>
+
+        <!-- Audio Mode -->
+        <div class="demo-placeholder" id="audioMode" style="display: none;">
+          <input type="file" id="audioUpload" accept="audio/*">
+          <button id="submitAudio" class="btn-primary">Submit Audio</button>
+          <p class="feedback" id="audioFeedback" style="display: none;">AI Feedback: Thanks for your audio! We'll analyze your tone and clarity.</p>
+        </div>
+
+        <!-- Video Mode -->
+        <div class="demo-placeholder" id="videoMode" style="display: none;">
+          <input type="file" id="videoUpload" accept="video/*">
+          <button id="submitVideo" class="btn-primary">Submit Video</button>
+          <p class="feedback" id="videoFeedback" style="display: none;">AI Feedback: Great video! Consider improving eye contact and confidence in delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const interviewType = document.getElementById("interviewType");
+  const startBtn = document.getElementById("startInterview");
+  const interviewDemo = document.getElementById("interviewDemo");
+  const interviewQuestion = document.getElementById("interviewQuestion");
+
+  const chatMode = document.getElementById("chatMode");
+  const audioMode = document.getElementById("audioMode");
+  const videoMode = document.getElementById("videoMode");
+
+  const userResponse = document.getElementById("userResponse");
+  const submitResponse = document.getElementById("submitResponse");
+  const aiFeedback = document.getElementById("aiFeedback");
+
+  const submitAudio = document.getElementById("submitAudio");
+  const audioFeedback = document.getElementById("audioFeedback");
+
+  const submitVideo = document.getElementById("submitVideo");
+  const videoFeedback = document.getElementById("videoFeedback");
+
+  const questions = {
+    chat: "Tell me about yourself and why you're interested in this position.",
+    audio: "Please introduce yourself and describe your strengths in a 30-second audio clip.",
+    video: "Record a short video explaining why you're a good fit for this role."
+  };
+
+  startBtn.addEventListener("click", () => {
+    const type = interviewType.value;
+    interviewQuestion.textContent = questions[type] || questions["chat"];
+    interviewDemo.style.display = "block";
+
+    // Reset all modes
+    chatMode.style.display = "none";
+    audioMode.style.display = "none";
+    videoMode.style.display = "none";
+    aiFeedback.style.display = "none";
+    audioFeedback.style.display = "none";
+    videoFeedback.style.display = "none";
+
+    // Show selected mode
+    if (type === "chat") chatMode.style.display = "block";
+    else if (type === "audio") audioMode.style.display = "block";
+    else if (type === "video") videoMode.style.display = "block";
+  });
+
+  submitResponse.addEventListener("click", () => {
+    const response = userResponse.value.trim().toLowerCase();
+    if (!response) return;
+
+    let feedback = "Great start! Try to include more about your relevant skills and experiences.";
+    if (response.includes("team") || response.includes("collaborate")) {
+      feedback = "Nice mention of teamwork! You could also highlight a specific project or achievement.";
+    } else if (response.includes("python") || response.includes("design") || response.includes("marketing")) {
+      feedback = "Good job referencing your skills! Consider tying them directly to the role you're applying for.";
+    } else if (response.length < 50) {
+      feedback = "Your response is a bit short. Try elaborating on your background and motivation.";
+    }
+
+    aiFeedback.textContent = `AI Feedback: ${feedback}`;
+    aiFeedback.style.display = "block";
+  });
+
+  submitAudio.addEventListener("click", () => {
+    const file = document.getElementById("audioUpload").files[0];
+    if (!file) return alert("Please upload an audio file.");
+    audioFeedback.style.display = "block";
+  });
+
+  submitVideo.addEventListener("click", () => {
+    const file = document.getElementById("videoUpload").files[0];
+    if (!file) return alert("Please upload a video file.");
+    videoFeedback.style.display = "block";
+  });
+</script>
+
+<!-- Add this CSS to your existing <style> block -->
+<style>
+.ai-interview-section {
+    padding: 5rem 0;
+    background-color: white;
+}
+
+.free-tier-notice {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 3rem 0;
+    border-left: 4px solid var(--accent-color);
+}
+
+.free-tier-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.free-tier-content ul {
+    columns: 2;
+    column-gap: 2rem;
+    padding-left: 1.5rem;
+}
+
+.free-tier-content li {
+    margin-bottom: 0.5rem;
+    break-inside: avoid;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.pricing-card.popular {
+    border: 2px solid var(--accent-color);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.pricing-header {
+    padding: 2rem;
+    text-align: center;
+    background: #f9fafb;
+}
+
+.pricing-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray-color);
+}
+
+.pricing-features {
+    padding: 0 2rem 2rem;
+}
+
+.pricing-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pricing-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--light-gray);
+    display: flex;
+    align-items: center;
+}
+
+.pricing-features li:before {
+    content: "✓";
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-right: 0.75rem;
+}
+
+.pricing-features li.disabled {
+    color: var(--gray-color);
+    opacity: 0.7;
+}
+
+.pricing-features li.disabled:before {
+    content: "✕";
+    color: #ef4444;
+}
+
+.pricing-btn {
+    display: block;
+    width: 80%;
+    margin: 0 auto 1.5rem;
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.pricing-btn.pro-btn {
+    background: var(--accent-color);
+    color: white;
+}
+
+.interview-simulator {
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.interview-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.interview-controls select,
+.interview-controls button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    border: 2px solid var(--light-gray);
+}
+
+.interview-controls select {
+    background: white;
+    color: var(--dark-color);
+}
+
+.interview-controls button {
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.interview-controls button:hover {
+    background: var(--secondary-color);
+}
+
+.interview-demo {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: left;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.demo-message {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.message-content {
+    background: #f3f4f6;
+    padding: 1rem;
+    border-radius: 12px;
+    line-height: 1.6;
+}
+
+.demo-placeholder {
+    color: var(--gray-color);
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .free-tier-content ul {
+        columns: 1;
+    }
+    
+    .interview-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pricing-btn {
+        width: 100%;
+    }
+}
+</style>
+
+<!-- Add this JavaScript before your closing </body> tag -->
+<script>
+// Interview counter for free tier
+let freeInterviewsUsed = 0;
+const FREE_LIMIT = 3;
+
+// Start interview button functionality
+document.getElementById('startInterview').addEventListener('click', function() {
+    const interviewType = document.getElementById('interviewType').value;
+    
+    if (freeInterviewsUsed >= FREE_LIMIT) {
+        alert(`You've used all ${FREE_LIMIT} free interviews this month! Upgrade to Pro for unlimited practice.`);
+        return;
+    }
+    
+    // Simulate interview start
+    let interviewText = "";
+    switch(interviewType) {
+        case "chat":
+            interviewText = "Starting chat interview...\nType your responses in the chat box that will appear.";
+            break;
+        case "audio":
+            interviewText = "Starting audio interview...\nAllow microphone access when prompted.";
+            break;
+        case "video":
+            interviewText = "Starting video interview...\nAllow camera and microphone access when prompted.";
+            break;
+    }
+    
+    // Show demo response
+    document.querySelector('.demo-placeholder').textContent = interviewText;
+    freeInterviewsUsed++;
+    
+    // Show usage counter
+    const usageMsg = `Free interviews used: ${freeInterviewsUsed}/${FREE_LIMIT}`;
+    if (!document.getElementById('usageCounter')) {
+        const counter = document.createElement('div');
+        counter.id = 'usageCounter';
+        counter.style.marginTop = '1rem';
+        counter.style.fontWeight = '500';
+        counter.style.color = freeInterviewsUsed >= FREE_LIMIT ? '#ef4444' : 'var(--primary-color)';
+        counter.textContent = usageMsg;
+        document.querySelector('.interview-simulator').appendChild(counter);
+    } else {
+        document.getElementById('usageCounter').textContent = usageMsg;
+        document.getElementById('usageCounter').style.color = 
+            freeInterviewsUsed >= FREE_LIMIT ? '#ef4444' : 'var(--primary-color)';
+    }
+    
+    // Reset demo after 5 seconds
+    setTimeout(() => {
+        document.querySelector('.demo-placeholder').textContent = "Your response will appear here...";
+    }, 5000);
+});
+</script> <!-- Add this CSS to your existing <style> block -->
+<style>
+                    .tool-card {
+                        background: white;
+                        border-radius: 12px;
+                        padding: 1.5rem;
+                        margin-top: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        box-shadow: var(--shadow);
+                    }
+
+                    .tool-image {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: var(--primary-color);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        flex-shrink: 0;
+                    }
+
+                    .tool-content {
+                        flex-grow: 1;
+                    }
+
+                    .tool-content h3 {
+                        margin-bottom: 0.5rem;
+                        font-size: 1.2rem;
+                    }
+
+                    .tool-content p {
+                        margin-bottom: 1rem;
+                        color: var(--gray-color);
+                    }
+
+                    .tool-content .btn {
+                        background: var(--primary-color);
+                        color: white;
+                        padding: 0.5rem 1rem;
+                        border-radius: 6px;
+                        text-decoration: none;
+                        transition: var(--transition);
+                    }
+
+                    .tool-content .btn:hover {
+                        background: var(--secondary-color);
+                    }
+</style>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for any questions or support</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>We'd Love to Hear From You</h2>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>support@skillfinder.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🏢</div>
+                            <div class="contact-text">
+                                <h4>Address</h4>
+                                <p>123 Learning Street, San Francisco, CA 94103</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🕒</div>
+                            <div class="contact-text">
+                                <h4>Hours</h4>
+                                <p>Monday - Friday: 9AM - 6PM PST</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="attachment">Attachment</label>
+                            <input type="file" id="attachment">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I agree to the <a href="https://testtraining.skill.jobs/page-detail/terms-conditions8" target="_blank" style="color: var(--accent-color);">terms and conditions</a></label>
+                            
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="robot" required>
+                            <label for="robot">I am not a robot</label> <span class="checkmark"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="contact-permission" required>    
+                            <label for="contact-permission">I agree to be contacted by SkillFinder</label>  
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="updates">
+                            <label for="updates">I want to receive updates about new skills and features</label>
+                        </div>
+                        <div class="form-group"> 
+                            <button type="reset" class="btn-cancel">Reset</button>   
+                            <button type="submit">submit</button>
+                            <span class="checkmark"></span>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Learners Say</h2>
+                <p>Join thousands of satisfied learners who have transformed their careers with SkillFinder.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-content">SkillFinder helped me transition from a retail job to a web development career in just 6 months. The personalized learning path was exactly what I needed.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Frontend Developer at TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">I was overwhelmed by all the options out there. SkillFinder's assessment helped me focus on the right skills for my goals. Now I'm a data analyst making twice my previous salary!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>Data Analyst at AnalyticsPro</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">The progress tracking feature kept me motivated. I could see my improvement week by week, which made all the difference in staying consistent with my learning.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">EP</div>
+                        <div class="author-info">
+                            <h4>Emma Patel</h4>
+                            <p>UX Designer at CreativeStudio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Learning Journey?</h2>
+            <p>Join over 500,000 learners who have discovered their perfect skills with SkillFinder.</p>
+            <a href="#signup" class="btn">Get Started Today</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>SkillFinder</h3>
+                    <p style="color: #d1d5db; margin-bottom: 1.5rem;">Discover your perfect skills and transform your career with our personalized learning platform.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">ig</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">Lifestyle</a></li>
+                        <li><a href="#">Personal Development</a></li>
+                        </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SkillFinder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close" id="signupClose">&times;</span>
+            <h2>Create Your Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupUsername">Username</label>
+                    <input type="text" id="signupUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="termsCheckbox" required>
+                    <label for="termsCheckbox">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>  
+                <div class="form-actions">
+                    <input type="submit" value="Sign Up" class="btn-submit">
+                </div>
+            </form>         
+                    <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="signupCancel">Cancel</button>
+                    <button type="submit" class="btn-submit">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close" id="loginClose">&times;</span>
+            <h2>Log In to Your Account</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="loginCancel">Cancel</button>
+                    <button type="submit" class="btn-submit">Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Store user data in memory (in real app, this would be server-side)
+        let currentUser = null;
+
+        // Comprehensive skill database
+        const skillsDatabase = [
+            {
+                id: 1,
+                title: "Web Development",
+                description: "Learn to build modern websites and web applications using HTML, CSS, JavaScript, React, and Node.js. Perfect for beginners and experienced developers alike.",
+                category: "Technology",
+                level: "Beginner Friendly",
+                duration: "3-6 months",
+                keywords: ["web development", "html", "css", "javascript", "react", "frontend", "backend", "fullstack", "web", "development"]
+            },
+            {
+                id: 2,
+                title: "Data Science",
+                description: "Master data analysis, visualization, machine learning, and statistical modeling using Python, R, and SQL. Extract valuable insights from complex datasets.",
+                category: "Technology",
+                level: "Intermediate",
+                duration: "6-12 months",
+                keywords: ["data science", "python", "r", "machine learning", "statistics", "data analysis", "visualization", "sql", "ai", "analytics"]
+            },
+            {
+                id: 3,
+                title: "UX/UI Design",
+                description: "Create intuitive and beautiful user experiences for digital products. Learn design principles, user research, prototyping, and tools like Figma and Adobe XD.",
+                category: "Design",
+                level: "Beginner Friendly",
+                duration: "3-6 months",
+                keywords: ["ux design", "ui design", "user experience", "user interface", "figma", "adobe xd", "prototyping", "wireframing", "design", "research"]
+            },
+            {
+                id: 4,
+                title: "Digital Marketing",
+                description: "Learn SEO, social media marketing, content strategy, email marketing, and analytics to grow online presence and drive business results.",
+                category: "Marketing",
+                level: "All Levels",
+                duration: "2-4 months",
+                keywords: ["digital marketing", "seo", "social media", "content marketing", "email marketing", "analytics", "google ads", "facebook ads", "marketing", "online"]
+            },
+            {
+                id: 5,
+                title: "Mobile App Development",
+                description: "Build native and cross-platform mobile applications for iOS and Android using Swift, Kotlin, React Native, or Flutter.",
+                category: "Technology",
+                level: "Intermediate",
+                duration: "4-8 months",
+                keywords: ["mobile development", "ios", "android", "swift", "kotlin", "react native", "flutter", "app development", "mobile", "applications"]
+            },
+            {
+                id: 6,
+                title: "Graphic Design",
+                description: "Master visual communication, branding, typography, and design software like Adobe Photoshop, Illustrator, and InDesign.",
+                category: "Design",
+                level: "Beginner Friendly",
+                duration: "3-6 months",
+                keywords: ["graphic design", "photoshop", "illustrator", "indesign", "branding", "typography", "visual design", "creative", "design", "art"]
+            },
+            {
+                id: 7,
+                title: "Cloud Computing",
+                description: "Learn AWS, Azure, or Google Cloud Platform to deploy, manage, and scale applications in the cloud. Essential for modern IT infrastructure.",
+                category: "Technology",
+                level: "Intermediate",
+                duration: "4-8 months",
+                keywords: ["cloud computing", "aws", "azure", "google cloud", "devops", "infrastructure", "cloud", "serverless", "kubernetes", "docker"]
+            },
+            {
+                id: 8,
+                title: "Project Management",
+                description: "Master project planning, execution, and delivery using methodologies like Agile, Scrum, and traditional project management frameworks.",
+                category: "Business",
+                level: "All Levels",
+                duration: "2-4 months",
+                keywords: ["project management", "agile", "scrum", "pmp", "business", "leadership", "planning", "execution", "delivery", "management"]
+            },
+            {
+                id: 9,
+                title: "Cybersecurity",
+                description: "Learn to protect systems, networks, and data from digital attacks. Cover topics like ethical hacking, network security, and security protocols.",
+                category: "Technology",
+                level: "Advanced",
+                duration: "6-12 months",
+                keywords: ["cybersecurity", "ethical hacking", "network security", "penetration testing", "security", "privacy", "protection", "digital security", "infosec", "hacking"]
+            },
+            {
+                id: 10,
+                title: "Content Creation",
+                description: "Master video production, photography, writing, and social media content creation to build your personal brand or create engaging content.",
+                category: "Marketing",
+                level: "Beginner Friendly",
+                duration: "2-4 months",
+                keywords: ["content creation", "video production", "photography", "writing", "social media", "youtube", "instagram", "blogging", "creative", "media"]
+            },
+            {
+                id: 11,
+                title: "Artificial Intelligence",
+                description: "Explore AI concepts, neural networks, deep learning, and natural language processing using Python and TensorFlow.",
+                category: "Technology",
+                level: "Advanced",
+                duration: "8-12 months",
+                keywords: ["artificial intelligence", "ai", "machine learning", "deep learning", "neural networks", "tensorflow", "pytorch", "nlp", "computer vision", "intelligence"]
+            },
+            {
+                id: 12,
+                title: "Financial Analysis",
+                description: "Learn financial modeling, investment analysis, corporate finance, and accounting principles to make data-driven business decisions.",
+                category: "Business",
+                level: "Intermediate",
+                duration: "3-6 months",
+                keywords: ["financial analysis", "finance", "accounting", "investment", "modeling", "business", "corporate finance", "valuation", "financial", "analysis"]
+            }
+        ];
+        
+        // DOM Elements
+        const userInfo = document.getElementById('userInfo');
+        const mainHeader = document.getElementById('mainHeader');
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const displayUsername = document.getElementById('displayUsername');
+        const displayPassword = document.getElementById('displayPassword');
+
+        // Modal Elements
+        const signupModal = document.getElementById('signupModal');
+        const loginModal = document.getElementById('loginModal');
+        const signupClose = document.getElementById('signupClose');
+        const loginClose = document.getElementById('loginClose');
+        const signupCancel = document.getElementById('signupCancel');
+        const loginCancel = document.getElementById('loginCancel');
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        //     anchor.addEventListener('click', function(e) {
+        //         e.preventDefault();
+                
+        //         const targetId = this.getAttribute('href');
+        //         if (targetId === '#' || targetId === '#login' || targetId === '#signup') {
+        //             if (targetId === '#login') {
+        //                 openLoginModal();
+        //             } else if (targetId === '#signup') {
+        //                 openSignupModal();
+        //             }
+        //             return;
+        //         }
+                
+        //         const targetElement = document.querySelector(targetId);
+        //         if (targetElement) {
+        //             window.scrollTo({
+        //                 top: targetElement.offsetTop - 80,
+        //                 behavior: 'smooth'
+        //             });
+                    
+        //             // Close mobile menu if open
+        //             if (navMenu.classList.contains('active')) {
+        //                 navMenu.classList.remove('active');
+        //             }
+        //         }
+        //     });
+        // });
+
+        // Modal Functions
+        function openSignupModal() {
+            signupModal.style.display = 'block';
+        }
+
+        function closeSignupModal() {
+            signupModal.style.display = 'none';
+            document.getElementById('signupForm').reset();
+        }
+
+        function openLoginModal() {
+            loginModal.style.display = 'block';
+        }
+
+        function closeLoginModal() {
+            loginModal.style.display = 'none';
+            document.getElementById('loginForm').reset();
+        }
+
+        // Event Listeners for Modals
+        signupBtn.addEventListener('click', openSignupModal);
+        loginBtn.addEventListener('click', openLoginModal);
+        signupClose.addEventListener('click', closeSignupModal);
+        loginClose.addEventListener('click', closeLoginModal);
+        signupCancel.addEventListener('click', closeSignupModal);
+        loginCancel.addEventListener('click', closeLoginModal);
+ 
+        // DOM Elements
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchResults = document.getElementById('searchResults');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const resultsTitle = document.getElementById('resultsTitle');
+        const resultsCount = document.getElementById('resultsCount');
+        const searchTerm = document.getElementById('searchTerm');
+        const popularSearches = document.querySelectorAll('.popular-search');
+
+            // Search functionality
+        function performSearch(query) {
+            if (!query.trim()) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const searchTermLower = query.toLowerCase();
+            const filteredSkills = skillsDatabase.filter(skill => {
+                // Check title, description, category, and keywords
+                const matchesTitle = skill.title.toLowerCase().includes(searchTermLower);
+                const matchesDescription = skill.description.toLowerCase().includes(searchTermLower);
+                const matchesCategory = skill.category.toLowerCase().includes(searchTermLower);
+                const matchesKeywords = skill.keywords.some(keyword => keyword.toLowerCase().includes(searchTermLower));
+                
+                return matchesTitle || matchesDescription || matchesCategory || matchesKeywords;
+            });
+
+            displayResults(filteredSkills, query);
+        }
+
+        function displayResults(skills, query) {
+            resultsGrid.innerHTML = '';
+            
+            if (skills.length === 0) {
+                resultsGrid.innerHTML = `
+                    <div class="result-card" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                        <h3>No results found for "${query}"</h3>
+                        <p>Try searching for different terms like "web development", "data science", or "design"</p>
+                    </div>
+                `;
+                resultsTitle.textContent = 'No Results Found';
+            } else {
+                resultsTitle.textContent = 'Search Results';
+                skills.forEach(skill => {
+                    const stars = '★'.repeat(Math.min(5, Math.floor(Math.random() * 3) + 3)) + '☆'.repeat(5 - Math.min(5, Math.floor(Math.random() * 3) + 3));
+                    const resultCard = document.createElement('div');
+                    resultCard.className = 'result-card';
+                    resultCard.innerHTML = `
+                        <div class="result-image">${skill.title}</div>
+                        <div class="result-content">
+                            <h3>${skill.title}</h3>
+                            <p>${skill.description}</p>
+                            <div class="result-meta">
+                                <span>${skill.category} • ${skill.level}</span>
+                                <span>${skill.duration}</span>
+                            </div>
+                            <div class="skill-level">
+                                <span>${skill.level}</span>
+                                <div class="stars">${stars}</div>
+                            </div>
+                            <a href="https://www.w3schools.com/webdev" target="_blank" class="enroll-btn">Start Learning</a>
+                        </div>
+                    `;
+                    resultsGrid.appendChild(resultCard);
+                });
+            }
+            
+            searchTerm.textContent = `"${query}"`;
+            searchResults.style.display = 'block';
+            
+            // Scroll to results
+            searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Event Listeners
+        searchBtn.addEventListener('click', () => {
+            performSearch(searchInput.value);
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch(searchInput.value);
+            }
+        });
+
+        // Popular search terms
+        popularSearches.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const term = link.getAttribute('data-term');
+                searchInput.value = term;
+                performSearch(term);
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === signupModal) closeSignupModal();
+            if (e.target === loginModal) closeLoginModal();
+        });
+
+        // Signup Form Submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            const termsAccepted = document.getElementById('termsCheckbox').checked;
+            if (!termsAccepted) {
+                alert('You must agree to the Terms of Service and Privacy Policy.');
+                return;
+            }
+
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            currentUser = { username, email, password };
+            // Basic validation (optional)
+    if (!username || !email || !password || !confirmPassword) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // Simulate form submission
+    alert('Signup successful! Welcome, ' + username);
+            
+            // In a real app, this would be sent to a server
+            alert('Account created successfully! You can now log in.');
+            closeSignupModal();
+        });
+
+        // Login Form Submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // In a real app, this would be verified with a server
+            // For demo purposes, we'll accept any credentials
+            currentUser = { username, password };
+            displayUsername.textContent = username;
+            displayPassword.textContent = password;
+            
+            // Show user info and hide auth buttons
+            userInfo.style.display = 'block';
+            mainHeader.style.display = 'none';
+            
+            closeLoginModal();
+        });
+
+        // Logout Functionality
+        logoutBtn.addEventListener('click', function() {
+            currentUser = null;
+            userInfo.style.display = 'none';
+            mainHeader.style.display = 'block';
+        });
+
+        // Add animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.feature-card, .skill-card, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial styles for scroll animation
+        document.querySelectorAll('.feature-card, .skill-card, .testimonial-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Trigger once on load
+        window.addEventListener('load', animateOnScroll);
+
+
+
+        searchBtn.addEventListener('click', () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                alert(`Searching for: ${query}`);
+                // In a real app, this would redirect to search results
+            }
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
